@@ -5,10 +5,6 @@ public class Player extends Participant {
   public Player() {
     super();
     this.name = "プレイヤー";
-    System.out.println(this.name + "の初期の手札を配ります..");
-    drawCard();
-    drawCard();
-
   }
 
   @Override
@@ -20,11 +16,15 @@ public class Player extends Participant {
         this.name + "の引いた" + hand.size() + "枚目のカードは" + dealtCard.getSuit().getName() + "の"
             + dealtCard.toDisplayValue());
     checkPoints();
-
-    //手札の合計値の表示
     if (hand.size() > 1) {
       System.out.println(this.name + "の合計値は" + this.point);
     }
+  }
+
+  @Override
+  protected void getStartingHand() {
+    drawCard();
+    drawCard();
   }
 
   @Override

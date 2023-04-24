@@ -17,6 +17,8 @@ public abstract class Participant {
 
   protected abstract void drawCard();
 
+  protected abstract void getStartingHand();
+
   protected abstract void getAdditionalCard();
 
   public void checkPoints() {

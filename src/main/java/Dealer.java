@@ -1,11 +1,9 @@
 public class Dealer extends Participant {
 
+//  基本的にコンストラクタには初期値の操作のみを入れる
   public Dealer() {
     super();
     name = "ディーラー";
-    System.out.println(this.name + "の初期の手札を配ります..");
-    drawCard();
-    drawCard();
   }
 
 
@@ -19,6 +17,12 @@ public class Dealer extends Participant {
     this.hand.add(dealtCard);
     this.point += dealtCard.getPoint();
     checkPoints();
+  }
+
+  @Override
+  protected void getStartingHand() {
+    drawCard();
+    drawCard();
   }
 
   @Override
