@@ -14,7 +14,7 @@ public class BlackJackApplication {
     var player = new Player();
     var dealer = new Dealer();
 
-    //v
+    //初期手札を引く
     player.getStartingHand();
     dealer.getStartingHand();
 
@@ -27,7 +27,8 @@ public class BlackJackApplication {
     continueBlackJack();
   }
 
-//ここの再帰関数だとGCがされず、playerとかdealerが生成されまくるので.別の方法を考える
+//ここの再帰関数だとGCがされず、playerとかdealerが生成されまくるので.別の方法を考える　gameのcallがスタック
+  //
   public static void continueBlackJack() {
     Scanner scanner = new Scanner(System.in);
     String input = "";

@@ -10,24 +10,24 @@ public class Deck {
 
   private Deck() {
     cards = new ArrayList<>();
-    createDeck();
+    create();
   }
 
   public static Deck getInstance() {
     return INSTANCE;
   }
 
-  private void createDeck() {
+  private void create() {
     for (Suit suit : Suit.values()) {
       for (int rank = 1; rank <= 13; rank++) {
         var card = new Card(suit, rank);
         cards.add(card);
       }
     }
-    shuffleDeck();
+    shuffle();
   }
 
-  private void shuffleDeck() {
+  private void shuffle() {
     Collections.shuffle(cards);
   }
 
