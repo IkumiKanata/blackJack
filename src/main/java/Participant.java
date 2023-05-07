@@ -21,11 +21,12 @@ public abstract class Participant {
 
   protected abstract void getAdditionalCard();
 
-  public void checkPoints() {
+  public boolean checkPoints() {
     if (point > 21) {
-      System.out.println(this.name + "の合計値は" + point);
       System.out.println("Busted!! " + this.name + "の負け");
-      BlackJackApplication.continueBlackJack();
+      return true;
     }
+    return false;
   }
+
 }

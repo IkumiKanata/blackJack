@@ -15,8 +15,7 @@ public class Player extends Participant {
     System.out.println(
         this.name + "の引いた" + hand.size() + "枚目のカードは" + dealtCard.getSuit().getName() + "の"
             + dealtCard.toDisplayValue());
-    checkPoints();
-    if (hand.size() > 1) {
+    if (this.hand.size() > 1) {
       System.out.println(this.name + "の合計値は" + this.point);
     }
   }
@@ -31,7 +30,7 @@ public class Player extends Participant {
   protected void getAdditionalCard() {
     Scanner scanner = new Scanner(System.in);
     String input = "";
-    while (!input.equals("no")) {
+    while (!input.equals("no")  && this.point <= 21) {
       System.out.print("カードを引き続き引きますか? (yes/no) ");
       input = scanner.nextLine();
       if (input.equals("yes")) {
