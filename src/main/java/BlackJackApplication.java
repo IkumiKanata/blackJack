@@ -3,7 +3,9 @@ import java.util.Scanner;
 public class BlackJackApplication {
 
   public static void main(String[] args) {
-    startGame();
+    gameLoop();
+    System.out.println("Exiting...");
+    System.exit(0);
   }
 
   //ゲームの中身
@@ -20,25 +22,28 @@ public class BlackJackApplication {
     //playerの追加のカードを引く
     player.getAdditionalCard();
 
+    ///TODO 17以下ならdealerは引き続けるというのはドメイン(今回のゲームのルール)なので,gameの中で書くべき
+    while(dealer.point < 17) {
+
+
+    }
 
     // playerのBust判定
-    var isPlayerBusted = player.checkPoints();
-    if (!isPlayerBusted) {
+    if (!player.isBust()) {
       //dealerの追加のカードを引く
       dealer.getAdditionalCard();
       // dealerのBust判定
-      var isDealerBusted = dealer.checkPoints();
-
-      if (!isDealerBusted) {
+      if (!dealer.isBust()) {
         // 勝敗のチェック
-        gameChecker(player, dealer);
+        checkWinner(player, dealer);
       }
     }
   }
 
   //ここの再帰関数だとGCがされず、playerとかdealerが生成されまくるので.別の方法を考える　gameのcallがスタック
   //whileのスコープ内でgameを呼び出すようにする
-  public static void startGame() {
+  //末尾再帰だけはおっけ
+  public static void gameLoop() {
     Scanner scanner = new Scanner(System.in);
     String input = "";
     while (!input.equals("no")) {
@@ -52,11 +57,10 @@ public class BlackJackApplication {
         input = scanner.nextLine();
       }
     }
-    System.out.println("Exiting...");
-    System.exit(0);
   }
 
-  private static void gameChecker(Player player, Dealer dealer) {
+  //TODO このcheckWinnerは二つの処理を行っている winnerのチェックと, その結果の表示 結果の表示はcheck自体とは関係がないので、別のメソッドに書くべき
+  private static void checkWinner(Player player, Dealer dealer) {
     System.out.println("手札公開!!");
     System.out.println("プレイヤー:" + player.point);
     System.out.println("ディーラー:" + dealer.point);

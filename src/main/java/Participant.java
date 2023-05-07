@@ -19,9 +19,12 @@ public abstract class Participant {
 
   protected abstract void getStartingHand();
 
+  //TODO getという名前だと,returnでCardを返すようなメソッドかなと思う
+//  drawとかaddのがいい
   protected abstract void getAdditionalCard();
 
-  public boolean checkPoints() {
+///TODO pointだとふわっとしてる
+  public boolean isBust() {
     if (point > 21) {
       System.out.println("Busted!! " + this.name + "の負け");
       return true;

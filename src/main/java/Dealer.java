@@ -10,13 +10,13 @@ public class Dealer extends Participant {
   @Override
   protected void drawCard() {
     var dealtCard = deck.drawCard();
+    //TODO gameRuleがgame外(dealerクラスの中)で書かれているべきではない
     if (this.hand.size() == 0) {
       System.out.println(name + "の1枚目のカードは" + dealtCard.getSuit().getName() + "の"
           + dealtCard.toDisplayValue());
     }
     this.hand.add(dealtCard);
     this.point += dealtCard.getPoint();
-    checkPoints();
   }
 
   @Override
